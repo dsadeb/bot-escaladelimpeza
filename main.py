@@ -11,11 +11,11 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 # Lista dos nomes em ordem de rodízio (use os nomes de usuário exatos do Discord, ex: "@Maria Fernanda")
 rodizio = [
-    "Maria Fernanda", "Maria Júlia", "Mateus Silverio", "Matheus Belizário", 
+    "Maria Júlia", "Mateus Silverio", "Matheus Belizário", 
     "Matheus Mello", "Milene Lopes", "Pedro Balieiro", "Rodrigo", 
     "Agata Kojiro", "Caio", "Cindy Grasiely", "Débora Sanches Ar...", 
     "Enzo Vieira", "Erik Takemoto", "Érica Doneux", "Fabio", 
-    "Hemilly Silva Barbosa", "João Birtche", "Julia Kliemann", "Lucas Sadoski"
+    "Hemilly Silva Barbosa", "João Birtche", "Julia Kliemann", "Lucas Sadoski", "Maria Fernanda"
 ]
 
 # Fuso-horário de Brasília
@@ -69,8 +69,8 @@ async def enviar_lembrete():
     global index_atual
     agora = datetime.now(timezone)
 
-    # Verifica se é sexta-feira e 16:30
-    if agora.weekday() == 4 and agora.hour == 16 and agora.minute == 30:
+    # Verifica se é sexta-feira e 17:00
+    if agora.weekday() == 4 and agora.hour == 17 and agora.minute == 00:
         nome_mencao = rodizio[index_atual % len(rodizio)]
         nome_limpo = nome_mencao.lower().strip("@").replace(" ", "")
         
