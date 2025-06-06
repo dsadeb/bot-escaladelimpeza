@@ -13,7 +13,7 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 rodizio = [
     "Mateus Silverio", "Matheus Belizário", 
     "Matheus Mello", "Milene Lopes", "Pedro Balieiro", "Rodrigo", 
-    "Agata Kojiro", "Caio", "Cindy Grasiely", "Débora Sanches Ar...", 
+    "Agata Kojiro", "Caio", "Cindy Grasiely", "Débora Sanches Aroca", 
     "Enzo Vieira", "Érica Doneux", "Fabio", 
     "Hemilly Silva Barbosa", "João Birtche", "Julia Kliemann", "Lucas Sadoski", "Maria Fernanda","Maria Júlia"
 ]
