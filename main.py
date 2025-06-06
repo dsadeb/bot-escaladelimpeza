@@ -14,7 +14,7 @@ rodizio = [
     "Maria Júlia", "Mateus Silverio", "Matheus Belizário", 
     "Matheus Mello", "Milene Lopes", "Pedro Balieiro", "Rodrigo", 
     "Agata Kojiro", "Caio", "Cindy Grasiely", "Débora Sanches Ar...", 
-    "Enzo Vieira", "Erik Takemoto", "Érica Doneux", "Fabio", 
+    "Enzo Vieira", "Érica Doneux", "Fabio", 
     "Hemilly Silva Barbosa", "João Birtche", "Julia Kliemann", "Lucas Sadoski", "Maria Fernanda"
 ]
 
