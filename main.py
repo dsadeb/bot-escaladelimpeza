@@ -12,7 +12,7 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 # Lista dos nomes em ordem de rodízio (use os nomes de usuário exatos do Discord, ex: "@Maria Fernanda")
 rodizio = [
     "Pedro Balieiro", "Rodrigo", 
-    "Agata Kojiro", "Caio", "Cindy Grasiely", "Débora Sanches Aroca", 
+    "Agata Kojiro", "Aline Lima", "Arthur Tormena", "Caio", "Cindy Grasiely", "Débora Sanches Aroca", 
     "Enzo Vieira", "Érica Doneux", "Fabio", 
     "Hemilly Silva Barbosa", "João Birtche", "Julia Kliemann", "Lucas Sadoski", "Maria Fernanda","Maria Júlia", "Mateus Silverio", "Matheus Belizário", 
     "Matheus Mello", "Milene Lopes"
