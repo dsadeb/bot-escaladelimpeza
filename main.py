@@ -11,11 +11,10 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 # Lista dos nomes em ordem de rodízio (use os nomes de usuário exatos do Discord, ex: "@Maria Fernanda")
 rodizio = [
-    "Pedro Balieiro", "Rodrigo", 
-    "Agata Kojiro", "Aline Lima", "Arthur Tormena", "Caio", "Cindy Grasiely", "Débora Sanches Aroca", 
-    "Enzo Vieira", "Érica Doneux", "Fabio", 
-    "Hemilly Silva Barbosa", "João Birtche", "Julia Kliemann", "Lucas Sadoski", "Maria Fernanda","Maria Júlia", "Mateus Silverio", "Matheus Belizário", 
-    "Matheus Mello", "Milene Lopes"
+    "Julia Kliemann", "Kauê Kazuo Kubo", "Lucas Sadoski", "Maria Fernanda","Maria Júlia", "Mateus Silverio", "Matheus Belizário", 
+    "Matheus Mello", "Milene Lopes", "Paulo Nogueira", "Pedro Balieiro", "Rodrigo", 
+    "Agata Kojiio", "Aline Lima", "Arthur Tormena", "Cindy Grasiely", "Débora Sanches Aroca", 
+    "Enzo Vieira", "Érica Doneux", "Fabio", "Hemilly Silva Barbosa", "João Birtche"
 ]
 
 # Fuso-horário de Brasília
