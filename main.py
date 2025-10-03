@@ -7,13 +7,10 @@ from datetime import datetime
 import pytz
 
 # ========= CONFIGURAÇÃO =========
-# O load_dotenv() é útil para testes locais, mas no Railway ele usará as variáveis do painel.
 load_dotenv() 
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-# Lê o ID do canal das variáveis de ambiente do Railway
 CHANNEL_ID = int(os.getenv("DISCORD_CHANNEL_ID", "0")) 
-# Caminho para salvar o arquivo de estado DENTRO do Volume do Railway
 ESTADO_ARQUIVO = "/data/estado_rodizio.txt"
 
 # Lista dos nomes em ordem de rodízio
@@ -41,7 +38,6 @@ def carregar_index():
         with open(ESTADO_ARQUIVO, "r") as f:
             return int(f.read().strip())
     except (FileNotFoundError, ValueError):
-        # Se o arquivo não existir ou estiver vazio, começa do 0
         return 0 
 
 def salvar_index(index):
@@ -53,7 +49,6 @@ def salvar_index(index):
         print(f"ERRO CRÍTICO AO SALVAR ESTADO: {e}")
         print("Verifique se o Volume está montado corretamente em /data no Railway.")
 
-# Carrega o índice inicial ao iniciar o bot
 index_atual = carregar_index()
 
 # ========= FUNÇÕES DO BOT =========
@@ -63,7 +58,6 @@ async def encontrar_membro(guild, nome_alvo):
     nome_limpo = nome_alvo.lower().strip().replace(" ", "")
     for member in guild.members:
         member_name_clean = member.display_name.lower().replace(" ", "")
-        # Checagem flexível de nome
         if nome_limpo in member_name_clean or member_name_clean in nome_limpo:
             return member
     return None
@@ -83,7 +77,6 @@ async def enviar_lembrete():
     
     channel = bot.get_channel(CHANNEL_ID)
     if not channel:
-        # Para não poluir o log, só avisa sobre o canal a cada hora
         if agora.minute == 0: 
              print(f"ERRO: Canal com ID {CHANNEL_ID} não encontrado. Verifique a variável de ambiente.")
         return
@@ -100,4 +93,53 @@ async def enviar_lembrete():
             await channel.send(mensagem)
             print(f"Lembrete semanal enviado para {membro.display_name}")
         else:
-            await channel.send(f"⚠️ Não encontrei o usuário `{nome_da_vez}` no servidor
+            # LINHA CORRIGIDA
+            await channel.send(f"⚠️ Não encontrei o usuário `{nome_da_vez}` no servidor para o lembrete semanal.")
+            print(f"Membro não encontrado para lembrete semanal: {nome_da_vez}")
+
+    # Lembrete para tirar o lixo na Sexta-feira às 17:00
+    if agora.weekday() == 4 and agora.hour == 17 and agora.minute == 0:
+        guild = channel.guild
+        membro = await encontrar_membro(guild, nome_da_vez)
+
+        if membro:
+            mensagem = f"🚩 Oi, {membro.mention}! Hora de tirar o lixo do escritório! ✨🗑️"
+            await channel.send(mensagem)
+            print(f"Mensagem de 'tirar o lixo' enviada para {membro.display_name}")
+            
+            index_atual += 1
+            salvar_index(index_atual)
+            
+            proxima_pessoa = rodizio[index_atual % len(rodizio)]
+            print(f"Rodízio avançou. Próxima pessoa: {proxima_pessoa} (índice: {index_atual})")
+        else:
+            # LINHA CORRIGIDA
+            await channel.send(f"⚠️ Não encontrei o usuário `{nome_da_vez}` no servidor para o lembrete de tirar o lixo.")
+            print(f"Membro não encontrado: {nome_da_vez}")
+
+# ========= COMANDOS EXTRAS =========
+
+@bot.command(name='proximo')
+async def proximo(ctx):
+    """Mostra quem é a pessoa da vez no rodízio."""
+    pessoa_atual = rodizio[index_atual % len(rodizio)]
+    await ctx.send(f"A pessoa da vez é: **{pessoa_atual}** (índice: {index_atual}).")
+
+@bot.command(name='forcared')
+async def forcar_rodizio(ctx):
+    """Força o rodízio para a próxima pessoa."""
+    global index_atual
+    index_atual += 1
+    salvar_index(index_atual)
+    
+    proxima_pessoa = rodizio[index_atual % len(rodizio)]
+    await ctx.send(f"✅ Rodízio avançado manualmente. A próxima pessoa é: **{proxima_pessoa}**.")
+    print(f"Rodízio avançado manualmente por {ctx.author}. Próxima pessoa: {proxima_pessoa}")
+
+# ========= INICIALIZAÇÃO =========
+def main():
+    keep_alive()
+    bot.run(BOT_TOKEN)
+
+if __name__ == "__main__":
+    main()
