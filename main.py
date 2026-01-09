@@ -15,10 +15,9 @@ ESTADO_ARQUIVO = "/data/estado_rodizio.txt"
 
 # Lista dos nomes em ordem de rodízio
 rodizio = [
-    "Julia Kliemann", "Kauê Kazuo Kubo", "Lucas Sadoski", "Maria Fernanda","Maria Júlia", "Mateus Silverio", "Matheus Belizário",
-    "Matheus Mello", "Milene Lopes", "Paulo Nogueira", "Pedro Balieiro", "Rodrigo",
-    "Agata Kojiio", "Aline Lima", "Arthur Tormena", "Cindy Grasiely", "Débora Sanches Aroca",
-    "Enzo Vieira", "Érica Doneux", "Fabio", "Hemilly Silva Barbosa", "João Birtche"
+    "Aline Lima", "Agata Kojiio", "Arthur Tormena", "Cindy Grasiely", "Débora Sanches Aroca",
+    "Enzo Vieira", "Érica Doneux", "Fabio", "Hemilly Silva Barbosa", "João Birtche", "Julia Kliemann", "Kauê Kazuo Kubo", "Lucas Sadoski", "Maria Fernanda", "Maria Júlia", "Mateus Silverio", "Matheus Belizário",
+    "Matheus Mello", "Milene Lopes", "Pedro Balieiro", "Rodrigo"
 ]
 
 # Fuso-horário de Brasília
